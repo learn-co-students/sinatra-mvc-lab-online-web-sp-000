@@ -1,15 +1,10 @@
 require 'pry'
 
 class PigLatinizer
-  attr_accessor :phrase
 
-  def initialize(phrase)
-    @phrase = phrase.downcase
-  end
-
-  def convert
-    rotated = phrase.split.map do |word|
-      word.chars.rotate.join + 'ay'
+  def piglatinize(phrase)
+    rotated = phrase.downcase.split.map do |word|
+      word.chars.rotate.join + 'way'
     end
 
     rotated.join(' ')
