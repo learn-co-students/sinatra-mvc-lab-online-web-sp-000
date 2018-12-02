@@ -9,9 +9,9 @@ class PigLatinizer
 
   def convert
     rotated = phrase.split.map do |word|
-      word.chars.rotate.join
+      word.chars.rotate.join + 'ay'
     end
-    
-    rotated.join(' ') + 'ay'
+
+    rotated.join(' ')
   end
 end
