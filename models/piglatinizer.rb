@@ -1,31 +1,38 @@
-class PigLatinizer 
-  
-  
-  def piglatinize(text)
-    
-    words = text.split(' ')
-    
-    latin_words = words.collect do |word|
-      if self.is_vowel(word[0].downcase)
-        word += "way"
-      else 
-        latin = word[1,(word.length -1)]
-        latin += word[0] + 'ay'
-        latin
-      end
-    end
-    latin_words.join(" ")
-    latin_words
+
+class PigLatinizer
+
+  def piglatinize(input_str)
+    input_str.split(" ").length == 1 ? piglatinize_word(input_str) : piglatinize_sentence(input_str)
   end
-  
-  def is_vowel(letter)
-    vowels = ['a','e','i','o','u']
-    vowels.any? do |vowel|
-      if vowel == letter
-        return true 
-      end
-    end
-    return false 
+
+  private
+
+  def consonant?(char)
+    !char.match(/[aAeEiIoOuU]/)
   end
-  
+
+  def piglatinize_word(word)
+    # word starts with vowel
+    if !consonant?(word[0])
+      word = word + "w"
+    # word starts with 3 consonants
+    elsif consonant?(word[0]) && consonant?(word[1]) && consonant?(word[2])
+      word = word.slice(3..-1) + word.slice(0,3)
+    # word starts with 2 consonants
+    elsif consonant?(word[0]) && consonant?(word[1])
+      word = word.slice(2..-1) + word.slice(0,2)
+    # word starts with 1 consonant
+    else
+      word = word.slice(1..-1) + word.slice(0)
+    end
+    word << "ay"
+  end
+
+  def piglatinize_sentence(sentence)
+    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
+  end
+
+
+
+
 end
