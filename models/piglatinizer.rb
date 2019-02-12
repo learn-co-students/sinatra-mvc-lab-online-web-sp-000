@@ -5,7 +5,7 @@ class PigLatinizer
       if /^[aeiou]/i.match(word)
         "#{word}way"
       else
-        matches = /^([bcdfghjklmnpqrstvwxyz]+)(.+)/i.match(word)
+        matches = /^([bcdfghjklmnpqrstvwxyz]+)(.*)/i.match(word)
         consonants = matches[1]
         rest = matches[2]
         "#{rest}#{consonants}ay"
