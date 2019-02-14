@@ -11,6 +11,7 @@ class PigLatinizer
   def pig_latin(string)
     split_string =string.split(" ").delete_if{|word|word.empty?}
       split_string.map do |word|
+        binding.pry
       piglatinize(word)
     end.join(" ")
   end
