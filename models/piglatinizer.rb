@@ -13,7 +13,7 @@ class PigLatinizer
     if starting_vowel?(word)
       word << 'way'
     else
-      vowel_index = word.index(word[/[AEIOUYaeiouy]/]) # Find first vowel or y in word
+      vowel_index = word.index(word[1..-1][/[AEIOUaeiouy]/]) # Find first vowel or y in word
       word[vowel_index..-1] << word[0..vowel_index - 1] << 'ay'
     end
   end
