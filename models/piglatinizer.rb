@@ -1,14 +1,24 @@
 class PigLatinizer
-
   def piglatinize(input)
-    words = input.split(' ')
-    words.collect do |string|
-      if string[/^[AEIOUaeiou]/] # Starts with a vowel
-        string << "way"
-      else
-        vowel_index = string.index(string[/[AEIOUYaeiouy]/]) # Has vowel or y in word
-        string[vowel_index..string.length]<<string[0..vowel_index-1]<<"ay"
-      end
-    end.join(' ')
+    input.split(' ').size == 1 ? piglatinize_word(input) : piglatinize_sentence(input)
+  end
+
+  private
+
+  def starting_vowel?(word)
+    word[/^[AEIOUaeiou]/]
+  end
+
+  def piglatinize_word(word)
+    if starting_vowel?(word)
+      word << 'way'
+    else
+      vowel_index = word.index(word[/[AEIOUYaeiouy]/]) # Find first vowel or y in word
+      word[vowel_index..-1] << word[0..vowel_index - 1] << 'ay'
+    end
+  end
+
+  def piglatinize_sentence(sentence)
+    sentence.split(' ').collect { |word| piglatinize_word(word) }.join(' ')
   end
 end
