@@ -5,9 +5,7 @@ class App < Sinatra::Base
     erb :user_input
   end
   post '/piglatinize' do
-    params[:user_phrase].split.collect do |word|
-    @piglatinized = PigLatinizer.new(params[:user_phrase])
-    @piglatinized = @piglatinized.transform
+    @piglatinized = params[:user_phrase].split().collect{|word| PigLatinizer.new(word).transform}.join(" ")
     erb :piglatinize
   end
 end

@@ -19,7 +19,7 @@ class PigLatinizer
   
   def transform
     if index_of_fv == 0
-      piglatin = @input + "yay"
+      piglatin = @input + "way"
     else
       piglatin = @input[index_of_fv..] + find_consonants_before_vowel + "ay"
     end
