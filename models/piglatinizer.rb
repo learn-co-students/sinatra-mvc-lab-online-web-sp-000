@@ -6,14 +6,9 @@ class PigLatinizer
 
   def piglatinizer_word(word)
     words = word.split(/([aeiouAEIOU].*)/)
-    if  word.size == 1
-      #binding.pry
-      (words.last + "way")
-    elsif words.first.empty?
-      #binding.pry
+    if  word.size == 1 || words.first.empty?
       (words.last + "way")
     else
-      #binding.pry
       (words.last + words.first + "ay")
     end
   end
