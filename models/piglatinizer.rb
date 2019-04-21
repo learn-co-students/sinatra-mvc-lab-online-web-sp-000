@@ -3,38 +3,36 @@ class PigLatinizer
 
     output_array = []
     @word_array = input_text.split(" ")
-    @word_array.map do |word|
+    @word_array = @word_array.map do |word|
       translate(word)
     end
     @word_array.join(" ")
   end
-  #    if !vowel?(word.first)
-  #      first_letter = word.shift
-  #      if upcase?(first_letter)
-  #        first_letter = first_letter.downcase
-  #        word[0] = word.first.upcase
-  #      end
-  #      word << first_letter
-  #      word = word.join + "ay"
-  #    else
-  #      word = word.join + "way"
-  #    end
-  #  end
 
-  end
-
-  def translate
+  def translate(word)
+    # Split word into character array
+    word = word.chars
     # Check if word is capitalized and set caps_flag accordingly
+    caps_flag = true if upcase?(word.first)
     # Downcase word
+    word = word.map { |character| character.downcase }
     # Check if first letter is vowel
-    #   if not:
-    #     pick off starting consonants
-    #     add starting consonants to end of word along with "ay"
+    if vowel?(word.first)
     #   if vowel:
-    #     add "way" to end of word
+          word << "w"
+    #     add "w" to end of word
+    else
+    #   if not:
+          word = move_consonants(word)
+    #     pick off starting consonants and
+    #     add starting consonants to end of word
+    end
     # If caps_flag is true capitalize word
-    # return
+    word[0] = word[0].upcase if caps_flag
+    word = word.join + "ay"
+    word
   end
+
   def vowel?(character)
     if character.downcase == "a" ||
         character.downcase == "e" ||
@@ -47,5 +45,22 @@ class PigLatinizer
 
   def upcase?(character)
     true if character == character.upcase
+  end
+
+  def move_consonants(word)
+    # moves letters from the start to the end of the word array until a vowel is found
+    # or every letter has been moved.
+    count = 0
+    until vowel?(word[0] || count >= word.length)
+      removed_letter = word.shift
+      word << removed_letter
+      count += 1
+      if word.last == 'q'
+        removed_letter = word.shift
+        word << removed_letter
+        count += 1
+      end
+    end
+    word
   end
 end
