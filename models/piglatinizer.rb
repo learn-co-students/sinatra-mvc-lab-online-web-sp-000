@@ -3,9 +3,9 @@ require 'pry'
 
 class PigLatinizer
 
-  def piglatinize(input_str)
-    piglatinize_word(input_str)
-    input_str.split(" ").count > 1 ?  piglatinize_sentence(input_str) : piglatinize_word(input_str)
+  def piglatinize(input)
+    piglatinize_word(input)
+    input.split(" ").count > 1 ?  piglatinize_sentence(input) : piglatinize_word(input)
   end
 
 
