@@ -1,34 +1,33 @@
-
-require 'pry'
-
 class PigLatinizer
 
   def piglatinize(input_str)
-    piglatinize_word(input_str)
-    input_str.split(" ").count > 1 ?  piglatinize_sentence(input_str) : piglatinize_word(input_str)
+    input_str.split(" ").length == 1 ? piglatinize_word(input_str) : piglatinize_sentence(input_str)
   end
 
+  private
+
+  def consonant?(char)
+    !char.match(/[aAeEiIoOuU]/)
+  end
 
   def piglatinize_word(word)
-    if word[0].match(/[aAeEiIoOuU]/)
-       word = word + "w"
+    # word starts with vowel
+    if !consonant?(word[0])
+      word = word + "w"
+    # word starts with 3 consonants
+    elsif consonant?(word[0]) && consonant?(word[1]) && consonant?(word[2])
+      word = word.slice(3..-1) + word.slice(0,3)
+    # word starts with 2 consonants
+    elsif consonant?(word[0]) && consonant?(word[1])
+      word = word.slice(2..-1) + word.slice(0,2)
+    # word starts with 1 consonant
     else
-      letter_array = word.split("")
-      con = []
-      while !letter_array.first.match(/[aAeEiIoOuU]/)
-        con << letter_array.shift
-      end
-      word = letter_array.join("") + con.join("")
+      word = word.slice(1..-1) + word.slice(0)
     end
-    word + "ay"
+    word << "ay"
   end
 
   def piglatinize_sentence(sentence)
-    word_array = sentence.split(" ")
-    new_word_array = []
-    word_array.each {|word| new_word_array << piglatinize_word(word)}
-    new_word_array.join(" ")
+    sentence.split.collect { |word| piglatinize_word(word) }.join(" ")
   end
-
-
 end
