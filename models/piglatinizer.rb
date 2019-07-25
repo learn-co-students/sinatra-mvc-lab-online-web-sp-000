@@ -1,16 +1,5 @@
 class PigLatinizer
 
-  # def piglatinize(string)
-  #   string = string.downcase
-  #   vowels = ['a', 'e', 'i', 'o', 'u']
-  #   input = string.split(' ')
-  #   result = []
-  # end
-
-  # def consonant(char)
-  #   !char.match(/aeiou/) #not sure to inculde upcase bc I used downcase in previous method
-  # end
-
   def piglatinize(string)
     array = string.split(' ')
     array_2 = array.map { |word| piglatinize_word(word) }
