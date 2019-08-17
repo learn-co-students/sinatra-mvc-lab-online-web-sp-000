@@ -6,9 +6,12 @@ class PigLatinizer
     if string.start_with?(/aeiou/) 
       new_string.prepend("way")
     else
-      new_string = string.split
-      new_string
-      binding.pry 
+      new_string = string.chars
+      take = new_string.delete_at(0)
+      new_string << take 
+      new_string.push("ay")
+      new_string.join("")
+      
     end
   end 
   
