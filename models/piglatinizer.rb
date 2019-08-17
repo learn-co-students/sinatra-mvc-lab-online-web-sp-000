@@ -1,7 +1,15 @@
-class Piglatinizer
+require 'pry'
+class PigLatinizer
   
-  def initialize(string)
-    string 
+  def piglatinize(string)
+     
+    if string.start_with?(/aeiou/) 
+      new_string.prepend("way")
+    else
+      new_string = string.split
+      new_string
+      binding.pry 
+    end
   end 
   
   
