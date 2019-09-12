@@ -5,6 +5,9 @@
   <title>PigLatinizer</title>
 </head>
 <body>
-  <%=@piglatinizer.to_pig_latin(@phrase)%>
+  <!-- <%=@piglatinizer.to_pig_latin(@phrase)%> -->
+  <p>
+    <%=@piglatinizer.piglatinize(@phrase)%>
+  </p>
 </body>
 </html>
