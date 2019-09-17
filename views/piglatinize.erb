@@ -7,7 +7,9 @@
 <body>
   <!-- <%=@piglatinizer.to_pig_latin(@phrase)%> -->
   <p>
-    <%=@piglatinizer.piglatinize(@phrase)%>
+    <!-- <%=@piglatinizer.to_pig_latin(@text)%> -->
+    <%= @user_phrase.translator 5>
+    <%= @user_phrase %>
   </p>
 </body>
 </html>
