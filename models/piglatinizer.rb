@@ -21,9 +21,10 @@ class PigLatinizer
                 consonants << text[0]
             if ["a", "e", "i", "o", "u"].include?(text[1]) == false
                     consonants << text[1]
-            else ["a", "e", "i", "o", "u"].include?(text[2]) == false
+            if ["a", "e", "i", "o", "u"].include?(text[2]) == false
                       consonants << text[2]
                 end
+            end
             end
         "#{text[consonants.length..-1]}#{first_letter}ay"
     end
