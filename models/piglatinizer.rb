@@ -17,14 +17,18 @@ class PigLatinizer
 
       if is_wovel(first_letter)
         string << word + "way" + " "
+
+      elsif !is_wovel(first_letter) && !is_wovel(second_letter) && !is_wovel(third_letter)
+        word[0..2] = ""
+        string << word + first_letter + second_letter + third_letter + "ay" + " "
+
       elsif !is_wovel(first_letter) && !is_wovel(second_letter) && is_wovel(third_letter)
-        to_delete = first_letter + second_letter
-        new_word = word.delete to_delete
-        string << new_word + first_letter + second_letter + "ay" + " "
+        word[0..1] = ""
+        string << word + first_letter + second_letter + "ay" + " "
+
       elsif !is_wovel(first_letter) && is_wovel(second_letter)
-        to_delete = first_letter
-        new_word = word.delete to_delete
-        string << new_word + first_letter + "ay" + " "
+        word[0] = ""
+        string << word + first_letter + "ay" + " "
       end
       
     end
