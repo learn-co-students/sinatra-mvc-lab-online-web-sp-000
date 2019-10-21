@@ -1,6 +1,5 @@
 class PigLatinizer
-
-
+    
     def split_words(text)
         @word_array = text.split(" ")
     end
