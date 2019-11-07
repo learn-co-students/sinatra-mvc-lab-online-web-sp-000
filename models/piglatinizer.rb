@@ -6,8 +6,9 @@ class PigLatinizer
     first_letter = word[0].downcase
     
     if first_letter_array.include?(first_letter)
-      puts "#{word}way"
+      "#{word}way"
     else
+      binding.pry
       consonants = []
       if !first_letter_array.include?(word[0]) && !first_letter_array.include?(word[1]) && !first_letter_array.include?(word[2]) 
         consonants << word[0]
