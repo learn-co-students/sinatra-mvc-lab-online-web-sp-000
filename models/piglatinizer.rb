@@ -1,32 +1,31 @@
-class Piglatinizer
-    attr_reader :text
+class PigLatinizer
 
-    def initialize(text)
-        @text_array = text.split(" ")
+    def piglatinize(string)
+        if string.split(" ").length == 1
+            piglatinize_single_word(string)
+        else
+            piglatinize_mult_words(string)
+        end
     end
-
-    def convert_word(word)
-        #If word begins with vowel
-            #grab vowel, length of word, build new word with vowel at end +"way"
-            #Return updated word
-        #If word begins with consonant
-            #Grab all leading consonants, move to end + "ay"
-            #Return updated word
-        converted_word 
-    end
-
-    def piglatinize_text
-        @text_array.map {|word| convert_word(word)}
-    end
-
-
-
-
-
-
-
     
+    def piglatinize_single_word(word)
+        if word[0].match(/[AaEeIiOoUu]/)
+            word = word + "w"
+        elseif (!word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) )
+            word = word.slice(3..-1) + word.slice(0,3)
+        elseif (!word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) )
+            word = word.slice(2..-1) + word.slice(0,2)
+        else
+            word = word.slice(1..-1) + word.slice(0)
+        end
+        word = word + "ay"
+    end
 
-
+    def piglatinize_mult_words(words)
+        output = words.split(" ") do |word|
+            piglatinize_single_word(word)
+        end
+        output.join(" ")
+    end
 
 end
