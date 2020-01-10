@@ -1,3 +1,5 @@
+require 'pry'
+
 class PigLatinizer
 
     def piglatinize(string)
@@ -9,11 +11,12 @@ class PigLatinizer
     end
     
     def piglatinize_single_word(word)
+        #binding.pry 
         if word[0].match(/[AaEeIiOoUu]/)
             word = word + "w"
-        elseif (!word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) )
+        elsif !word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) && !word[2].match(/[AaEeIiOoUu]/) 
             word = word.slice(3..-1) + word.slice(0,3)
-        elseif (!word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) )
+        elsif !word[0].match(/[AaEeIiOoUu]/) && !word[1].match(/[AaEeIiOoUu]/) 
             word = word.slice(2..-1) + word.slice(0,2)
         else
             word = word.slice(1..-1) + word.slice(0)
@@ -22,7 +25,9 @@ class PigLatinizer
     end
 
     def piglatinize_mult_words(words)
-        output = words.split(" ") do |word|
+
+        output = words.split(" ").map do |word|
+            #binding.pry
             piglatinize_single_word(word)
         end
         output.join(" ")
