@@ -7,17 +7,18 @@ class PigLatinizer
 
   def piglatinize(word)
     vowels = ["a", "e", "i", "o", "u","A", "E", "I", "O","U"]
-
+    moved_char = ""
     if vowels.include? word[0]
-      word = word.split("").shift
-      word + "way"
+      word << word[0]
+      word = word[1..-1]
+      word + moved_char + "way"
     else
       constants = ""
       while !vowels.include? word[0]
-        constants << word[0]
-        word = word.split("")[1..-1].join
+        moved_char << word[0]
+        word = word[1..-1]
       end
-      word + constants + "ay"
+      word + moved_char + "ay"
     end
   end
 
