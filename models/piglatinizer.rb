@@ -5,12 +5,12 @@ class PigLatinizer
     words.split do |word| #break down word
       modified_word = shift_to_vowel(word)
       if modified_word == word # No change
-        piglatin << "#{word}way"
+        piglatin << "#{word}way "
       else
-        piglatin << "#{modified_word}ay"
+        piglatin << "#{modified_word}ay "
       end
     end
-    return piglatin
+    return piglatin.strip
   end
   
   def start_with_vowel?(word)
