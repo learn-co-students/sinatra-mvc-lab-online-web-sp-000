@@ -1,11 +1,11 @@
 class PigLatinizer 
    attr_accessor :word
 
-   def initialize(word)
+   def initialize
       @word = word 
    end 
 
-   def piglatinize
+   def piglatinize(word)
       # takes care of parsing the string into words
       # then putting the piglatinized words back
       # together.
@@ -23,12 +23,10 @@ class PigLatinizer
       if first_letter.match(/[aeoui]/)
          "#{word}way"
       else
-         
+         # new_word = word.slice(2..word.length) + first_letter + word.slice(1, 1) + "ay"
+         word.concat(word.slice!(/^[^aeiou]*/i || ""))
+         word += "ay"
       end 
    end 
-
-   def piglatinize_consonant_word 
-
-   end
 
 end 
