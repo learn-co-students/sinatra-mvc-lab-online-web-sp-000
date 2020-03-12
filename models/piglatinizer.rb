@@ -27,8 +27,4 @@ class PigLatinizer
       end 
    end 
 
-   def piglatinize_consonant_word 
-
-   end
-
 end 
