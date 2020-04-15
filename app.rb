@@ -5,23 +5,25 @@ require_relative 'models/pig_latinizer.rb'
 class App < Sinatra::Base
 
   get '/' do
-
     erb :user_input
   end
 
-  post '/' do
-    # binding.pry
-    input_from_user = params[:input]
-    @pl = PigLatinizer.new(input_from_user)
-    # @words = PigLatinizer.new(params[:input])
+post '/piglatinize' do
+   @a = params[:user_phrase]
+    #  binding.pry
+    # @pl = Pig_Latinizer.new
 
-    erb :results
-  end
+  erb :user_input
+end
 
+# get '/piglatinize' do
+#    @a = params[:user_phrase]
+#     #  binding.pry
+#    @p = PigLatinizer.new(a)
+#
+#    erb :piglatinize
+# end
 
-  # get '/results' do
-  #   "Hello"
-  # end
 
 
 end
