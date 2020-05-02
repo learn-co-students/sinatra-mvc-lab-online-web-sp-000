@@ -7,8 +7,8 @@ require_relative 'config/environment'
         end
     
         post '/piglatinize' do
-            pl = PigLatinizer.new
-            @piglatin = pl.piglatinize(params[:user_phrase])
-            erb :result
+            pig = PigLatinizer.new
+            @piglatin = pig.piglatinize(params[:user_phrase])
+            erb :results
         end
     end 
