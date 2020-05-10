@@ -3,7 +3,7 @@ describe 'class PigLatinizer' do
 
 
   it 'can create a new instance of a class' do
-    expect(PigLatinizer.new).to be_an_instance_of(PigLatinizer)
+    expect(PigLatinizer.new()).to be_an_instance_of(PigLatinizer)
   end
 
   it 'piglatinizes an individual word' do
