@@ -1,24 +1,23 @@
 class PigLatinizer
 
-  attr_accessor :converted_phrase, :user_phrase
+  attr_reader :text
 
-  def piglatinize(str)
-      vowels = ["a", "e", "i", "o", "u","A","E","I","O","U"]
-
-      if vowels.find {|v| v == str[0]
-        str + "way"  #if it begins with a vowel just add "way"
-      elsif vowels.include?(str[1])
-        front_end = str.slice!(0)
-        str + front_end +"ay"
-      else
-        vowel_index = str.index(/[aeiou]/)
-        front_end = str.slice!(0..vowel_index-1)
-        str + front_end +"ay"
-      end
+  def split_up(text)
+    array = text.split(" ")
+    array.map do |word|
+      piglatinize(word)
+    end
   end
 
-  def to_pig_latin(phrase)
-    @converted_phrase = phrase.split(" ").collect {|word| piglatinize(word)}.join(" ")
-  end
+  def piglatinize(text)
+    if text.include?(" ")
+       @converted = split_up(text).join(" ") #if it's a phrase split it up and send it through again
+     elsif ["a","e","i","o","u"].include?(text[0].downcase)
+       @converted = text + "way" #if it starts with a vowel then add way
+     else
+        parts = text.split(/([aeiou].*)/) #if it's a word with a consonant then get that section and move it the end and then add way
+        @converted = parts[1]+parts[0]+"ay"
+     end
+   end
 
 end
