@@ -15,8 +15,8 @@ class PigLatinizer
      elsif ["a","e","i","o","u"].include?(text[0].downcase)
        @converted = text + "way" #if it starts with a vowel then add way
      else
-        parts = text.split(/([aeiou].*)/) #if it's a word with a consonant then get that section and move it the end and then add way
-        @converted = parts[1]+parts[0]+"ay"
+        sections = text.split(/([aeiou].*)/) #if it's a word with a consonant then get that section and move it the end and then add way
+        @converted = sections[1]+sections[0]+"ay"
      end
    end
 
