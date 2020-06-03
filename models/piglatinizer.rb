@@ -1,8 +1,8 @@
 class PigLatinizer
 
     def piglatinize(input)
-        normal = input.split(" ")
-        modified = a.map {|word| piglatinize_word(word)}
+        original = input.split(" ")
+        modified = original.map {|word| piglatinize_word(word)}
         modified.join(" ")
     end
 
@@ -15,9 +15,9 @@ class PigLatinizer
         else
             consonants = []
             consonants << word[0]
-                if word[1].start_with?('a','e','i','o','u') == false
+                if !word[1].start_with?('a','e','i','o','u')
                     consonants << word[1]
-                    if word[2].start_with?('a','e','i','o','u') == false
+                    if !word[2].start_with?('a','e','i','o','u')
                         consonants << word[2]
                     end
                 end
