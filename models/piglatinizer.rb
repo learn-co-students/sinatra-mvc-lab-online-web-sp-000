@@ -1,29 +1,26 @@
 class PigLatinizer
   
-  attr_reader :text
+  attr_accessor :word
   
-  def initialize(text)
-    @text = text.downcase
-  end
-  
-  def convertor
+  def piglatinize(word)
     
     array = []
   
-    text.split.each do |e|
-      if "aeoui".include?(e[0])
+    word.split.each do |e|
+      if "aeouiAEOUI".include?(e[0])
         array << e + "way"
       elsif 
         i = 0
         sub_consonant = ""
-        while !"aeoui".include?(e[i])
+        while !"aeouiAEOUI".include?(e[i])
           sub_consonant << e[i]
           i += 1
         end
       word = e[sub_consonant.length..-1] + sub_consonant + "ay"
       array << word
+      end
     end
     array.join(" ")
   end
-end
 
+end
