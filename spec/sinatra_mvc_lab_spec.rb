@@ -27,7 +27,7 @@ describe "Pig Latinizer App" do
     end
 
   end
-
+  
   describe "POST '/piglatinize'" do
     before do
       post '/piglatinize', {
