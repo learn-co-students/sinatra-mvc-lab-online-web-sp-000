@@ -1,0 +1,15 @@
+if words.size == 1
+  words
+elsif vowels.include?(word[0])
+  words + 'ay'
+elsif consonants.include?(words[0]) &&
+  consonants.include?(words[1])
+  words[2..-1] + words[0..1] + 'ay'
+elsif words[0..1] == "qu"
+  words[2..-1]+"quay"
+elsif words[0..2] == "squ"
+   words[3..-1]+"squay"
+else consonants.include?(words[0])
+  words[1..-1] + words[0..0] + 'ay'
+end
+end
