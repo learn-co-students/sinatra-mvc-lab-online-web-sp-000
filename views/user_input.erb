@@ -3,9 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
+    <style>
+      #string {
+        width: 300px;
+        border-color: blue;
+      }
+    </style>
   </head>
   <body>
-    <h1>Pig Latinizer</h1>
-  
+    <h1>Pig Latinizer!</h1>
+    <form method="post" action="/piglatinize">
+      <p>Enter your phrase:<input type="text" name="user_phrase" id="string"></p>
+      <input type="submit" value="Translate" id="submit">
+    </form>
   </body>
 </html>
