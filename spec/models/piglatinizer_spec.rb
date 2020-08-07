@@ -1,4 +1,4 @@
-describe 'class PigLatinizer' do
+describe 'class PigLatinizer' do #describe 'class PigLatinizer' do
   let!(:words) { PigLatinizer.new }
 
 
