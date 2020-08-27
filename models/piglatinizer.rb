@@ -1,35 +1,26 @@
+require "pry"
 class PigLatinizer
 
-  def piglatinize(string)
-    # split string into individual parts
-    a = string.split(" ")
-    # piglatinize each word using piglatinize_word helper method
-    b = a.map { |word| piglatinize_word(word) }
-    # join the words again into a string
-    b.join(" ")
+  def piglatinize(text)
+    words = text.split(" ") # split string into individual parts
+    var = words.map! { |word| piglatinize_word(word)} # piglatinize each word using piglatinize_word helper method
+    var.join(" ") # join the words again into a string
   end
 
   def piglatinize_word(word)
-
-    first_letter = word[0].downcase
-
-    if ["a", "e", "i", "o", "u"].include?(first_letter)
-      "#{word}way"
-      # piglatinize word that starts with vowel
-    else
-      consonants = []
-      consonants << word[0]
-      # piglatinize word that starts with a constant
-      if ["a", "e", "i", "o", "u"].include?(word[1]) == false
-        consonants << word[1]
-
-        if ["a", "e", "i", "o", "u"].include?(word[2]) == false
-          consonants << word[2]
-
-        end
-      end
+    if vowel?(word[0])
+      binding.pry
+      return "#{word}way"
+    else index = word.index(/[ioueaIOUEA]/)
+    start_word = word.slice(0, index)
+    end_word = word.slice(index..word.length)
+    return "#{end_word}#{start_word}ay"
     end
+  end
 
-      "#{word[consonants.length.-1] + consonants.join + "ay"}"
-    end
+
+  def vowel?(letter)
+    letter.downcase
+    letter == "i" || letter == "o" || letter == "u" || letter == "e" || letter == "a"
+  end
 end
