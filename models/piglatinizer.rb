@@ -3,8 +3,9 @@ class PigLatinizer
 
   def piglatinize(text)
     words = text.split(" ") # split string into individual parts
+    # binding.pry
     if words.length == 1
-      piglatinize_word(words)
+      piglatinize_word(words[0])
     else
       piglatinize_sentance(words)
     end
@@ -26,11 +27,12 @@ class PigLatinizer
   def vowel?(letter)
     letter.downcase
     letter == "i" || letter == "o" || letter == "u" || letter == "e" || letter == "a" || letter == "E" || letter == "I" || letter == "O" || letter == "U" || letter == "A"
+    # use regex - refactor
   end
 
   def piglatinize_sentance(sentance)
-  arr  = sentance.split(" ")
-  arr.each { |word| piglatinize_word(word)}.join(" ")
+  sentance.map { |word| piglatinize_word(word)}.join(" ")
+
   end
 
 end
