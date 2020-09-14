@@ -1,11 +1,11 @@
 class PigLatinizer
 
     def piglatinize(words)
-        piglatin = words.downcase.split(" ")
+        piglatin = words.split(" ")
         piglatinized = []
         
             piglatin.each do |word|
-                if word.start_with?(/[aeiou]/) #starts with a vowel
+                if word.start_with?(/[aeiouAEIOU]/) #starts with a vowel
                  piglatin_word = "#{word}way"
                 
                 else #starts with consonants
@@ -19,6 +19,5 @@ class PigLatinizer
             piglatinized << piglatin_word
             end #end of iteration
         piglatinized.join(" ")
-        
     end    
 end
