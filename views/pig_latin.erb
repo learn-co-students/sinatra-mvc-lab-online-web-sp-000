@@ -6,7 +6,6 @@
   </head>
   <body>
     <h1>Pig Latin Output</h1>
-    # code the output here...
-    <p><%= @piglatinizer %></p>
+    <p><%= @piglatinizer.piglatinize(params[:user_phrase]) %></p>
   </body>
 </html>

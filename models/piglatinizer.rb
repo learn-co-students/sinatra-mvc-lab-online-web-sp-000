@@ -1,4 +1,4 @@
-class PigLatinizer 
+class PigLatinizer
 
   def piglatinize(string)
     words = string.split(" ")
@@ -6,7 +6,7 @@ class PigLatinizer
       if word.start_with?(/[aeiouAEIOU]/)
         word << "way"
       else 
-        while word.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+        while word.start_with?(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/)
         word = word.split.map { |word| word.chars.rotate.join }.join(" ")
           if word.start_with?(/[aeiouAEIOU]/)
             break
