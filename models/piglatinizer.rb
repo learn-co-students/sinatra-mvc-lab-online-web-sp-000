@@ -8,7 +8,9 @@ class PigLatinizer
       if word.start_with?(/[aeiouAEIOU]/)
         word << "way"
       elsif word.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
-        pig_word = word.split.map { |word| word.chars.rotate.join }.join(" ") << "ay"
+        while word.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+          pig_word = word.split.map { |word| word.chars.rotate.join }.join(" ")
+          pig_word << "ay"
       else
         word << "ay"
       end
