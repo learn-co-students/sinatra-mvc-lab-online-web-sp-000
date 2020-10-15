@@ -5,10 +5,12 @@ class PigLatinizer
   def piglatinize(string)
     words = string.split(" ")
     words.map do |word|
-      # binding.pry
       if word.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
         # move letter to end of word
-        word.split.map { |word| word.chars.rotate.join }.join(' ') << "ay"
+        pig_word = word.split.map { |word| word.chars.rotate.join }.join(" ") << "ay"
+        # binding.pry
+
+        pig_word.to_str
       else
         word << "ay"
       end
