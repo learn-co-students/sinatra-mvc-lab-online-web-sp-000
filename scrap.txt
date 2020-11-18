@@ -1,0 +1,12 @@
+        if letters[0].include?(/[bcdfghjklmnpqrstvwxyz]/) && letters[1].include?(/[aeoui]/)
+                pig = letters.shift
+                letters.push(pig, "a", "y") 
+                letters.join
+            elsif letters[0].include?(/[bcdfghjklmnpqrstvwxyz]/) && letters [1].include?(/[bcdfghjklmnpqrstvwxyz]/)
+                pig = letters.shift(2)
+                letters.push(pig, "a", "y") 
+                letters.join
+            elsif letters[0].include?(/[aeiou]/)
+                letters.push("w", "a", "y")
+                letters.join
+            end
