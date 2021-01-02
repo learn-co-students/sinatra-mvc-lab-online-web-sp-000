@@ -1,24 +1,30 @@
 class PigLatinizer
 
-    def piglatinize(word)
-        normal_word = ["i", "me", "to", "too", "a", "an", "in", "and", "on"]
-        vowels = ["a", "e", "i", "o", "u" ]
+    def piglatinize_word(word)
+        @word = word
 
-        if normal_word.include?(word)
-            word
-        elsif vowels.include? word[0]
-            word << "way"
+        if starts_with_a_vowel? == false
+            @word = @word.chars.rotate.join until starts_with_a_vowel? == true
+            @word + "ay"
         else 
-            consonants = ""
-        while !vowels.include?(word[0])
-        consonants << word[0]
-        word = word.split("")[1..-1].join
+            word + "way"
         end 
-        word + consonants + 'ay'
+    end 
+    
+def piglatinize(word)
+    if word.include?(" ")
+        piglatinize_sentence(word)
+    else 
+        piglatinize_word(word)
+    end 
+end 
+
+def piglatinize_sentence(sentence)
+    sentence.split(" ").map {|word| piglatinize_word(word)}.join(" ")
+end 
+
+def starts_with_a_vowel?
+    @word.scan(/^[aeiou]/i).size > 0
     end 
 end 
  
-    def to_pig_latin(string)
-    string.split.collect{|word| piglatinize(word)}.join("")
-    end 
-end 
