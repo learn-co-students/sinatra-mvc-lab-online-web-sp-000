@@ -1,13 +1,13 @@
 require 'pry'
 class PigLatinizer
 
-    def initialize(user_phrase)
-        @user_phrase = user_phrase
+    def initialize(text)
+        @text = text
     end
 
-    def pig_latin(user_phrase)
-        if /^[aeiou]/i.match(user_phrase)
-            "#{user_phrase}way"
+    def pig_latin(text)
+        if /^[aeiou]/i.match(text)
+            "#{text}way"
         else
             parts = text.split(/([aeiou].*)/)
             "#{parts[1]}#{parts[0]}ay"
