@@ -10,7 +10,12 @@ class PigLatinizer
     words.join(" ")
   end
 
-  def piglatinize_word(word)
+  def piglatinize_word(word) # checks to see if the first letter of the word is a vowel
+    # if it is a vowel, then we're good to end way to the end of the word
+    # if it isn't a vowel, then we shovel that letter into our consonants array
+    # then we check the next letter, if it's a vowel, we add way to the end of the word
+    # if it's not a vowel, then we shovel it into the consonants array
+    # after shovelin beginning consonants into consonants array, we split the word using a range and then we join it back together with "ay" at the end.
     first_letter = word[0].downcase
 
     if ["a", "e", "i", "o", "u"].include?(first_letter)
