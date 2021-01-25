@@ -1,13 +1,16 @@
 require 'pry'
 class PigLatinizer
-    attr_reader :text
 
-    def initialize(text)
-        @text
+    def initialize(user_phrase)
+        @user_phrase = user_phrase
     end
 
-    def pig_latin(text)
-        text += ( (text[0] =~ /[aeiou]/).nil? ? "" : "w")
-        text.gsub(/([^aeiou]?)([aeiou])(\w+)(.?)/, '\2\3\1\4ay')
+    def pig_latin(user_phrase)
+        if /^[aeiou]/i.match(user_phrase)
+            "#{user_phrase}way"
+        else
+            parts = text.split(/([aeiou].*)/)
+            "#{parts[1]}#{parts[0]}ay"
+        end
     end
 end
