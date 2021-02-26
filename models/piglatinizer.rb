@@ -18,9 +18,7 @@ class PigLatinizer
     end
   
     def piglatinize(string)
-        a = string.split(" ")
-        b = a.map {|word| piglatify(word)}
-        b.join(" ")
+        string.split(" ").map{|word| piglatify(word)}.join(" ")
     end
 
   end
