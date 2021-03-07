@@ -1,5 +1,9 @@
 class PigLatinizer
   
+  #def initialize(word)
+   # @word = word
+  #end
+  
   def piggyspeak(word)
     consonant_end = "ay"
     vowel_end = "way"
@@ -40,11 +44,7 @@ class PigLatinizer
        end
        end
      
-     
-     
-     
-     
-    
+  
 end 
   
    
